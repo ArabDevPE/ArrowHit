@@ -11,7 +11,7 @@ use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\entity\ProjectileHitEvent;
 use pocketmine\Player;
-use pocketmine\level\sound\AnvilFallSound;
+use pocketmine\level\sound\ClickSound;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageByChildEntityEvent;
@@ -29,8 +29,8 @@ class Main extends PluginBase Implements Listener{
         if($event instanceof EntityDamageByChildEntityEvent){
             $target = $event->getEntity();
             $player = $event->getDamager();
-            $event->getDamager()->sendTip("§aYou hit§c ".$target->getName());
-            $player->getLevel()->addSound(new AnvilFallSound($player), [$player]);
+            $event->getDamager()->sendTip("§3You damage ! §e".$target->getName()."§3with §c".$target->getHealth().);
+            $player->getLevel()->addSound(new ClickSound($player), [$player]);
                 }
         }
 }
